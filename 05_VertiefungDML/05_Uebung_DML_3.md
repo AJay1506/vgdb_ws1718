@@ -47,7 +47,7 @@ Wessen Provision liegt über der durchschnittlichen Provision aller Vertreter?
 
 ### Lösung
 ```sql
-SELECT vnr 
+SELECT vnr, vname 
 FROM Vertreter
 WHERE Provision > (
 	SELECT AVG(Provision)

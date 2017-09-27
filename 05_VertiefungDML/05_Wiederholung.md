@@ -7,7 +7,7 @@ Führe das SQL-Skript [DB-Vertreter](./SQL_-_DB-Vertreter.sql) in SQLPlus aus, u
 
 ### Lösung
 ```sql
-Deine Lösung
+Start H:\workspace\github\AJay1506\vgdb_ws1718\05_VertiefungDML\SQL_-_DB-Vertreter.sql
 ```
 
 ## Aufgabe 2
@@ -21,7 +21,7 @@ Zeige alle Vertreter mit `NAME` und `VNR` an, die eine Provision von  weniger al
 
 ### Lösung
 ```sql
-Deine Lösung
+SELECT VNAME,VNR FROM vertreter WHERE provision < 7;
 ```
 
 ## Aufgabe 4
@@ -29,5 +29,5 @@ Bei welchen Artikeln (`NAME` und `ARTIKELNUMMER`) liegt der Preis über `100`?
 
 ### Lösung
 ```sql
-Deine Lösung
+SELECT ANAME,ANR FROM artikel WHERE APREIS >100;
 ```

@@ -7,7 +7,8 @@ Wie viel kostet der teuerste Artikel?
 
 ### Lösung
 ```sql
-Deine Lösung
+SELECT MAX(APREIS)
+FROM Artikel;
 ```
 
 ## Aufgabe 2
@@ -15,7 +16,8 @@ Wie hoch ist die durchschnittliche Provision aller Vertreter?
 
 ### Lösung
 ```sql
-Deine Lösung
+SELECT AVG(Provision) Provisionsdurchschnitt
+FROM Vertreter;
 ```
 
 ## Aufgabe 3
@@ -23,7 +25,9 @@ Wie viele Artikel hat der Vertreter Mueller insgesamt verkauft?
 
 ### Lösung
 ```sql
-Deine Lösung
+SELECT SUM(Anzahl)
+FROM Verkauf
+WHERE VNR = (SELECT VNR FROM Vertreter WHERE VNAME= 'Mueller');
 ```
 
 ## Aufgabe 4
@@ -31,7 +35,10 @@ Wie viele Wintermäntel hat der Vertreter Jahred insgesamt verkauft?
 
 ### Lösung
 ```sql
-Deine Lösung
+SELECT SUM(Anzahl)
+FROM Verkauf
+WHERE VNR = (SELECT VNR FROM Vertreter WHERE VNAME= 'Jahred')
+AND anr=(SELECT anr FROM Artikel WHERE ANAME = 'Wintermantel');
 ```
 
 ## Aufgabe 5
@@ -40,6 +47,10 @@ Wessen Provision liegt über der durchschnittlichen Provision aller Vertreter?
 
 ### Lösung
 ```sql
-Deine Lösung
+SELECT vnr 
+FROM Vertreter
+WHERE Provision > (
+	SELECT AVG(Provision)
+	FROM Vertreter);
 ```
 

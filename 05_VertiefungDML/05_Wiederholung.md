@@ -45,14 +45,14 @@ Füge dich als Vetreter in die Tabelle Vetreter ein mit einer Provision von 6% u
 
 ###Lösung
 ```sql
-INSERT INTO vertreter values (257, 'Jahn', to_date('15.06.1992'), 6);
+INSERT INTO vertreter values (7777, 'Jahn', to_date('15.06.1992'), 6);
 ```
 
 ## Aufgabe 7
 
 ###Lösung
 ```sql
-
+INSERT INTO Verkauf values (1014, 7777, 13, 22, to_date('27.09.2017', 'dd.mm.yyyy'));
 ```
 
 ## Aufgabe 8

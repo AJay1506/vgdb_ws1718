@@ -21,7 +21,7 @@ Zeige alle Vertreter mit `NAME` und `VNR` an, die eine Provision von  weniger al
 
 ### Lösung
 ```sql
-SELECT VNAME,VNR FROM vertreter WHERE provision < 7;
+SELECT VNAME,VNR FROM vertreter WHERE provision < 0.07;
 ```
 
 ## Aufgabe 4
@@ -37,7 +37,7 @@ Zeige alle Vertreter an, die vor dem 01.01.1980 geboren sind.
 
 ###Lösung
 ```sql
-SELECT * FROM vertreter WHERE to_date(geburtsdatum, 'dd.mm.yyyy') < '01.01.1980';
+SELECT * FROM vertreter WHERE to_date(geburtsdatum, 'dd.mm.yyyy') < '01.01.1980' AND VNAME LIKE '%i%';
 ```
 
 ## Aufgabe 6
@@ -45,7 +45,7 @@ Füge dich als Vetreter in die Tabelle Vetreter ein mit einer Provision von 6% u
 
 ###Lösung
 ```sql
-INSERT INTO vertreter values (7777, 'Jahn', to_date('15.06.1992'), 6);
+INSERT INTO vertreter values (7777, 'Jahn', to_date('15.06.1992'), 0.06);
 ```
 
 ## Aufgabe 7
@@ -87,5 +87,7 @@ ALTER TABLE Vertreter modify (VNAME VARCHAR2(20));
 
 ###Lösung
 ```sql
-SELECT * FROM verkauf WHERE datum IS NOT NULL;
+SELECT DISTINCT datum FROM Verkauf;
 ```
+
+commit;

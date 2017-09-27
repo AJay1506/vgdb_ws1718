@@ -7,7 +7,8 @@ Erzeuge eine Ausgabe, in der jeder Vertreter (`VNR` und `VNAME`) mit all seinen 
 
 ### Lösung
 ```sql
-SELECT vertreter.vnr,VNAME FROM Vertreter INNER JOIN verkauf ON vertreter.vnr = verkauf.vnr;
+SELECT vertreter.vnr,VNAME 
+FROM Vertreter INNER JOIN verkauf ON vertreter.vnr = verkauf.vnr;
 ```
 
 ## Aufgabe 2
@@ -15,7 +16,10 @@ Reduziere die Ausgabe aus Aufgabe 1 auf Vertreter und ihre Verkäufe, bei denen 
 
 ### Lösung
 ```sql
-SELECT vertreter.vnr,VNAME FROM Vertreter INNER JOIN verkauf ON vertreter.vnr = verkauf.vnr WHERE anzahl > 10;
+SELECT vertreter.vnr,VNAME 
+FROM Vertreter 
+INNER JOIN verkauf ON vertreter.vnr = verkauf.vnr 
+WHERE anzahl > 10;
 ```
 
 ## Aufgabe 3
@@ -31,7 +35,11 @@ FROM <TABELLE/N>
 
 ### Lösung
 ```sql
-SELECT vertreter.vnr,VNAME,ANAME,APREIS FROM Vertreter INNER JOIN verkauf ON vertreter.vnr = verkauf.vnr INNER JOIN Artikel ON artikel.anr = verkauf.anr WHERE verkauf.anzahl > 10; 
+SELECT vertreter.vnr,VNAME,ANAME,APREIS 
+FROM Vertreter 
+INNER JOIN verkauf ON vertreter.vnr = verkauf.vnr 
+INNER JOIN Artikel ON artikel.anr = verkauf.anr 
+WHERE verkauf.anzahl > 10; 
 ```
 
 ## Aufgabe 4
@@ -39,6 +47,10 @@ Zeige für den Verkäufer mit `VNR` = `1010` alle Verkäufe (`ANZAHL`, `DATUM`) 
 
 ### Lösungen
 ```sql
-SELECT anzahl,datum FROM verkauf INNER JOIN Artikel ON artikel.anr = verkauf.anr
-WHERE verkauf.vnr=1010 AND datum=to_date('27.06.2015', 'dd.mm.yyyy') AND artikel.anr IN (12,13); 
+SELECT anzahl,datum 
+FROM verkauf 
+INNER JOIN Artikel ON artikel.anr = verkauf.anr
+WHERE verkauf.vnr=1010 
+AND datum=to_date('27.06.2015', 'dd.mm.yyyy') 
+AND artikel.anr IN (12,13); 
 ```

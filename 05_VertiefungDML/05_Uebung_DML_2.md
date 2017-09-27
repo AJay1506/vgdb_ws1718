@@ -7,7 +7,13 @@ Zeige alle Vertreter (`VNR`, `VNAME`) an, die bereits Artikel mit der `ANR` = `1
 
 ### Lösung
 ```sql
-SELECT v.vnr, vname FROM Vertreter v WHERE v.vnr IN(SELECT VNR FROM Verkauf WHERE ANR = 13);
+SELECT v.vnr, vname 
+FROM Vertreter v 
+WHERE v.vnr IN (
+	SELECT VNR 
+	FROM Verkauf 
+	WHERE ANR = 13
+);
 ```
 
 ## Aufgabe 2
@@ -15,7 +21,14 @@ Zeige alle Artikel (`ANR`, `ANAME`) an, die der Vertreter mit der `VNR` = `4321`
 
 ### Lösung
 ```sql
-SELECT a.anr,ANAME FROM Artikel a WHERE a.anr IN (SELECT anr FROM Verkauf WHERE VNR = 4321 AND Datum = to_date('27.06.2015', 'dd.mm.yyyy'));
+SELECT a.anr,ANAME 
+FROM Artikel a 
+WHERE a.anr IN (
+	SELECT anr 
+	FROM Verkauf 
+	WHERE VNR = 4321 
+	AND Datum = to_date('27.06.2015', 'dd.mm.yyyy')
+);
 ```
 
 ## Aufgabe 3
@@ -23,8 +36,14 @@ Zeige alle Vertreter (`VNR`, `VNAME`) an, die bereits Artikel verkauft haben, de
 
 ### Lösung
 ```sql
-SELECT v.vnr,VNAME FROM Vertreter v 
-WHERE v.vnr IN (SELECT VNR FROM Artikel INNER JOIN Verkauf ON Artikel.anr=Verkauf.anr WHERE APREIS > 100);
+SELECT v.vnr,VNAME 
+FROM Vertreter v 
+WHERE v.vnr IN (
+	SELECT VNR 
+	FROM Artikel 
+	INNER JOIN Verkauf ON Artikel.anr=Verkauf.anr 
+	WHERE APREIS > 100
+);
 ```
 
 ## Aufgabe 4
@@ -32,7 +51,13 @@ Zeige alle Vertreter, die noch nie den Artikel mit der `ANR` = `22` verkauft hab
 
 ### Lösung
 ```sql
-SELECT * FROM Vertreter WHERE vnr NOT IN(SELECT VNR FROM Verkauf WHERE ANR = 22);
+SELECT * 
+FROM Vertreter 
+WHERE vnr NOT IN(
+	SELECT VNR 
+	FROM Verkauf 
+	WHERE ANR = 22
+);
 ```
 
 ## Aufgabe 5

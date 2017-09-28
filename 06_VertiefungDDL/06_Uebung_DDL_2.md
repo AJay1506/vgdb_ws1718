@@ -41,6 +41,6 @@ Lege den benötigten Foreign Key Constraint (`FK`) für die Tabelle `EMP` neu an
 ### Lösung
 ```sql
 ALTER TABLE emp
-ADD CONSTRAINT fkper FOREIGN KEY(DEPTNO) REFERENCES dept(DEPTNO);
+ADD CONSTRAINT fkdeptno FOREIGN KEY(DEPTNO) REFERENCES dept(DEPTNO);
 ```
 

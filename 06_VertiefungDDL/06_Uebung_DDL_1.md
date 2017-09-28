@@ -15,7 +15,12 @@ Erzeuge eine View, die folgendes Ergebnis repräsentiert, das nur Verkäufe vom 
 
 ### Lösung
 ```sql
-Deine Lösung
+Create OR REPLACE VIEW v_Uebung06 AS
+SELECT v.vnr, vname, unr, anzahl, v.anr, aname, apreis
+FROM verkauf v
+INNER JOIN artikel a ON ( v.anr = a.anr)
+INNER JOIN vertreter vt ON (vt.vnr=v.vnr)
+WHERE to_date('27.06.2015', 'dd.mm.yyyy') = Datum; 
 ```
 
 ## Aufgabe 2
@@ -23,7 +28,9 @@ Wie viele **Verkäufe** hat der Vertreter Mueller am `27.06.15` durchgeführt?
 
 ### Lösung
 ```sql
-Deine Lösung
+SELECT COUNT(anzahl) 
+FROM v_Uebung06
+WHERE VNAME = 'Mueller';
 ```
 
 ## Aufgabe 3
@@ -31,7 +38,9 @@ Wie viele **Artikel** hat der Vertreter Mueller am `27.06.15 verkauft?
 
 ### Lösung
 ```sql
-Deine Lösung
+SELECT SUM(anzahl) 
+FROM v_Uebung06
+WHERE VNAME = 'Mueller';
 ```
 
 ## Aufgabe 4
@@ -39,7 +48,9 @@ Wie viele Artikel wurden durchschnittlich am `27.06.15` verkauft?
 
 ### Lösung
 ```sql
-Deine Lösung
+SELECT AVG(anzahl) 
+FROM verkauf
+WHERE to_date('27.06.2015', 'dd.mm.yyyy') = Datum;
 ```
 
 ## Aufgabe 5
@@ -47,5 +58,8 @@ Welcher Artikel (`ANR` und `ANAME`) wurde am `27.06.15` nicht verkauft?
 
 ### Lösung
 ```sql
-Deine Lösung
+SELECT DISTINCT artikel.anr, ANAME
+FROM ARTIKEL
+INNER JOIN verkauf v ON (v.anr = artikel.anr)
+WHERE to_date('27.06.2015', 'dd.mm.yyyy') != Datum;
 ```

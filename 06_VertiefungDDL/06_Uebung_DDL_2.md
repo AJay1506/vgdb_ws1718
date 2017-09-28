@@ -7,15 +7,14 @@ Lege für die Tabellen `VERTRETER`, `VERKAUF` und `ARTIKEL` Primary Key Constrai
 
 ### Lösung
 ```sql
-CREATE TABLE Vertreter
-(
-	vnr NUMBER(38,0) CONSTRAINT pkper PRIMARY KEY,
-);	
+ALTER TABLE Vertreter
+ADD CONSTRAINT pkver PRIMARY KEY (vnr);	
 
-CREATE TABLE Verkauf
-(
-	(38,0) CONSTRAINT pkper PRIMARY KEY,
-);	
+ALTER TABLE Verkauf
+ADD CONSTRAINT pkverk PRIMARY KEY (unr);
+
+ALTER TABLE Artikel
+ADD CONSTRAINT pkart PRIMARY KEY (anr);	
 ```
 
 ## Aufgabe 2
@@ -23,7 +22,8 @@ Lege für die Tabelle `VERKAUF` alle notwendigen Foreign Key Constraints (`FK`) 
 
 ### Lösung
 ```sql
-Deine Lösung
+ALTER TABLE verkauf
+ADD CONSTRAINT fkverk_Art FOREIGN KEY(anr) REFERENCES artikel;
 ```
 
 ## Aufgabe 3
@@ -31,7 +31,8 @@ Lösche den Foreign Key Constraint `FK_DEPTNO`. Dieser ist für die Spalte `DEPT
 
 ### Lösung
 ```sql
-Deine Lösung
+ALTER TABLE emp
+DROP CONSTRAINT FK_deptno;
 ```
 
 ## Aufgabe 4
@@ -39,6 +40,7 @@ Lege den benötigten Foreign Key Constraint (`FK`) für die Tabelle `EMP` neu an
 
 ### Lösung
 ```sql
-Deine Lösung
+ALTER TABLE emp
+ADD CONSTRAINT fkper FOREIGN KEY(DEPTNO) REFERENCES dept(DEPTNO);
 ```
 

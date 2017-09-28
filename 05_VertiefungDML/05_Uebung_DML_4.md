@@ -60,7 +60,13 @@ Zeige alle Vertreter (`VNR`, `VNAME`) an, die im selben Jahr geboren sind wie de
 
 ### Lösung
 ```sql
-Deine Lösung
+SELECT vnr,vname 
+FROM Vertreter
+WHERE TO_CHAR(Geburtsdatum , 'yyyy') = (
+	SELECT TO_CHAR(Geburtsdatum , 'yyyy')
+	FROM Vertreter 
+	WHERE VNAME = 'Jahred')
+;
 ```
 
 ## Aufgabe 7
@@ -68,5 +74,15 @@ Erhöhe bei den Vertretern den Bonus um `300`, die in einem Monat geboren sind, 
 
 ### Lösung
 ```sql
-Deine Lösung
+UPDATE Vertreter 
+SET bonus = bonus + 300 
+WHERE vnr IN( 
+	SELECT vnr 
+	FROM Vertreter 
+	WHERE TO_CHAR(Geburtsdatum, 'mm') IN (
+		SELECT TO_CHAR(LAST_DAY(Geburtsdatum), 'mm')
+		FROM Vertreter
+		WHERE TO_CHAR(LAST_DAY(Geburtsdatum), 'dd') = '31'
+		)
+);
 ```

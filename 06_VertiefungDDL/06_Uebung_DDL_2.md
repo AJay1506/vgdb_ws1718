@@ -7,7 +7,15 @@ Lege für die Tabellen `VERTRETER`, `VERKAUF` und `ARTIKEL` Primary Key Constrai
 
 ### Lösung
 ```sql
-Deine Lösung
+CREATE TABLE Vertreter
+(
+	vnr NUMBER(38,0) CONSTRAINT pkper PRIMARY KEY,
+);	
+
+CREATE TABLE Verkauf
+(
+	(38,0) CONSTRAINT pkper PRIMARY KEY,
+);	
 ```
 
 ## Aufgabe 2
